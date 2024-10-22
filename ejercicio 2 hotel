@@ -1,0 +1,75 @@
+# Clase Habitacion
+class Habitacion:
+    def __init__(self, numero, tipo):
+        self.numero = numero
+        self.tipo = tipo  # 'individual' o 'doble'
+        self.reservada = False
+    
+    def reservar(self):
+        if not self.reservada:
+            self.reservada = True
+            print(f"La habitación {self.numero} ha sido reservada.")
+        else:
+            print(f"La habitación {self.numero} ya está reservada.")
+    
+    def liberar(self):
+        if self.reservada:
+            self.reservada = False
+            print(f"La habitación {self.numero} ha sido liberada.")
+        else:
+            print(f"La habitación {self.numero} ya está libre.")
+
+# Clase Huesped
+class Huesped:
+    def __init__(self, nombre, id_huesped):
+        self.nombre = nombre
+        self.id_huesped = id_huesped
+
+# Clase Hotel
+class Hotel:
+    def __init__(self):
+        self.habitaciones = []
+    
+    def agregar_habitacion(self, habitacion):
+        self.habitaciones.append(habitacion)
+    
+    def reservar_habitacion(self, numero, huesped):
+        for habitacion in self.habitaciones:
+            if habitacion.numero == numero:
+                if not habitacion.reservada:
+                    habitacion.reservar()
+                    print(f"Reserva realizada a nombre de {huesped.nombre}.")
+                    return
+                else:
+                    print(f"La habitación {numero} ya está reservada.")
+                    return
+        print(f"No se encontró la habitación {numero}.")
+    
+    def liberar_habitacion(self, numero):
+        for habitacion in self.habitaciones:
+            if habitacion.numero == numero:
+                habitacion.liberar()
+                return
+        print(f"No se encontró la habitación {numero}.")
+
+# Uso del sistema
+if __name__ == "__main__":
+    # Crear el hotel
+    hotel = Hotel()
+    
+    # Agregar habitaciones
+    habitacion1 = Habitacion(101, "individual")
+    habitacion2 = Habitacion(102, "doble")
+    hotel.agregar_habitacion(habitacion1)
+    hotel.agregar_habitacion(habitacion2)
+    
+    # Crear huéspedes
+    huesped1 = Huesped("Juan Pérez", "12345")
+    
+    # Reservar habitaciones
+    hotel.reservar_habitacion(101, huesped1)  # Reserva realizada a nombre de Juan Pérez.
+    hotel.reservar_habitacion(101, huesped1)  # La habitación 101 ya está reservada.
+    
+    # Liberar habitación
+    hotel.liberar_habitacion(101)  # La habitación 101 ha sido liberada.
+    hotel.liberar_habitacion(101)  # La habitación 101 ya está libre.
