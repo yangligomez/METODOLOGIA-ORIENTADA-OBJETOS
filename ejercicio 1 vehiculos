@@ -1,0 +1,55 @@
+# METODOLOGIA-ORIENTADA-OBJETOS
+# Clase base Vehículo
+class Vehiculo:
+    def __init__(self, marca, modelo):
+        self.marca = marca
+        self.modelo = modelo
+        self.encendido = False
+    
+    def encender(self):
+        if not self.encendido:
+            self.encendido = True
+            print(f"El {self.marca} {self.modelo} está encendido.")
+        else:
+            print(f"El {self.marca} {self.modelo} ya está encendido.")
+    
+    def apagar(self):
+        if self.encendido:
+            self.encendido = False
+            print(f"El {self.marca} {self.modelo} está apagado.")
+        else:
+            print(f"El {self.marca} {self.modelo} ya está apagado.")
+
+# Subclase Auto
+class Auto(Vehiculo):
+    def tocar_bocina(self):
+        if self.encendido:
+            print(f"El {self.marca} {self.modelo} está tocando la bocina: ¡BEEP BEEP!")
+        else:
+            print(f"No puedes tocar la bocina porque el {self.marca} {self.modelo} está apagado.")
+
+# Subclase Motocicleta
+class Motocicleta(Vehiculo):
+    def hacer_caballito(self):
+        if self.encendido:
+            print(f"La motocicleta {self.marca} {self.modelo} está haciendo un caballito.")
+        else:
+            print(f"No puedes hacer un caballito porque la motocicleta {self.marca} {self.modelo} está apagada.")
+
+# Uso del sistema
+if __name__ == "__main__":
+    # Crear instancias de Auto y Motocicleta
+    auto1 = Auto("Toyota", "Corolla")
+    moto1 = Motocicleta("Yamaha", "MT-07")
+
+    # Encender los vehículos
+    auto1.encender()  # El Toyota Corolla está encendido.
+    moto1.encender()  # La motocicleta Yamaha MT-07 está encendida.
+
+    # Usar las funcionalidades específicas
+    auto1.tocar_bocina()  # El Toyota Corolla está tocando la bocina: ¡BEEP BEEP!
+    moto1.hacer_caballito()  # La motocicleta Yamaha MT-07 está haciendo un caballito.
+
+    # Apagar los vehículos
+    auto1.apagar()  # El Toyota Corolla está apagado.
+    moto1.apagar()  # La motocicleta Yamaha MT-07 está apagada.
