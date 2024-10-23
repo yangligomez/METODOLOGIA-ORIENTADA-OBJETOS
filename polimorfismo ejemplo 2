@@ -1,0 +1,24 @@
+class Vehiculo:
+    def moverse(self):
+        raise NotImplementedError("Esta función debe ser sobrescrita por las clases hijas")
+
+class Coche(Vehiculo):
+    def moverse(self):
+        return "El coche se está moviendo por la carretera"
+
+class Bicicleta(Vehiculo):
+    def moverse(self):
+        return "La bicicleta se está moviendo por el carril bici"
+
+class Barco(Vehiculo):
+    def moverse(self):
+        return "El barco se está moviendo por el agua"
+
+# Ejemplo de uso
+mi_coche = Coche()
+mi_bicicleta = Bicicleta()
+mi_barco = Barco()
+
+print(mi_coche.moverse())     # El coche se está moviendo por la carretera
+print(mi_bicicleta.moverse()) # La bicicleta se está moviendo por el carril bici
+print(mi_barco.moverse())     # El barco se está moviendo por el agua
