@@ -1,0 +1,14 @@
+def sumar(a, b):
+    if isinstance(a, int) and isinstance(b, int):
+        return a + b
+    elif isinstance(a, list) and isinstance(b, list):
+        return a + b
+    elif isinstance(a, str) and isinstance(b, str):
+        return a + b
+    else:
+        raise TypeError("Los tipos de datos no son compatibles para la suma.")
+
+# Ejemplos de uso
+print(sumar(3, 4))             # 7
+print(sumar([1, 2], [3, 4]))   # [1, 2, 3, 4]
+print(sumar("Hola, ", "yang li")) # "Hola, yang li"
